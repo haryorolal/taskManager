@@ -1,1 +1,189 @@
 /* You can add global styles to this file, and also import other style files */
+@import "bootstrap/scss/bootstrap";
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Upright:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500;600;700&display=swap');
+
+:root {
+  ---font-base: 'Cormorant Upright', serif;
+  ---font-alt: 'Open Sans', sans-serif;
+  
+  ---color-bg: #040c18;
+  ---color-gold: #DCCA87;
+  ---color-black: #0C0C0C;
+  ---color-gray: #545454;
+  ---color-crimson: #F5EFDB;
+  ---color-grey: #AAAAAA;
+  ---color-white: #FFFFFF;
+  ---color-brown: #562B00;
+  ---color-lightbrown: rgb(164, 86, 8);
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    scroll-behavior: smooth;
+}
+
+a {
+    color: unset;
+    text-decoration: none;
+}
+
+body {
+  background: var(---color-bg);
+}
+
+.gradient__bg {
+  /* global 92%+ browsers support */
+  background: radial-gradient(circle at 3% 25%, rgb(164, 86, 8) 0%, rgba(4, 12, 24, 1) 100%);
+}
+
+.section__padding {
+    padding: 4rem 6rem;
+}
+
+.section__margin {
+  margin: 4rem 6rem; 
+}
+
+.flex__center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.app__bg {
+
+}
+
+.app__wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.app__wrapper-info {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.app__wrapper-img {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 2rem;
+}
+
+.p__opensans {
+    font-family: var(---font-alt);
+    color: var(---color-white);
+    font-weight: 400;
+    letter-spacing: 0.04rem;
+    text-transform: capitalize;
+    line-height: 28px;
+    font-size: 16px;
+}
+
+.custom__button {
+    background-color: var(---color-crimson);
+    color: var(---color-black);
+    font-family: var(---font-base);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    line-height: 28px;
+    font-size: 16px;
+    padding: 0.5rem 1.5rem;
+    border-radius: 1px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.slide-bottom {
+    -webkit-animation: slide-bottom 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+      animation: slide-bottom 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  }
+
+
+  @media screen and (min-width: 2000px) {
+    .custom__button,
+    .p__cormorant {
+      font-size: 37px;
+      line-height: 67px;
+    }
+  
+    .p__opensans {
+      font-size: 30px;
+      line-height: 50px;
+    }
+  
+    .headtext__cormorant {
+      font-size: 150px;
+      line-height: 210px;
+    }
+  
+    .spoon__img {
+      width: 80px;
+    }
+  }
+  
+  @media screen and (max-width: 1150px) {
+    .app__wrapper {
+      flex-direction: column;
+    }
+  
+    .app__wrapper-img {
+      margin: 5rem 0 0 0;
+    }
+  
+    .app__wrapper-img_reverse {
+      margin: 0 0 5rem 0;
+    }
+  
+    .app__wrapper-img img {
+      width: 100%;
+    }
+  }
+  
+  @media screen and (max-width: 850px) {
+    .section__padding {
+      padding: 4rem;
+    }
+  }
+  
+  @media screen and (max-width: 650px) {
+    .section__padding {
+      padding: 4rem 2rem;
+    }
+    
+    .p__cormorant {
+      font-size: 21px;
+    }
+  
+    .p__opensans {
+      font-size: 14px;
+    }
+  }
+  
+  @media screen and (max-width: 450px) {
+    .p__opensans {
+      font-size: 12px;
+    }
+  
+    .p__cormorant {
+      font-size: 19px;
+    }
+  
+    .headtext__cormorant {
+      font-size: 45px;
+      line-height: 70px;
+    }
+  }

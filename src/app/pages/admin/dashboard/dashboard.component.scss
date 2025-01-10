@@ -1,0 +1,42 @@
+.app__dashboard {
+    // background: var(---color-white);
+    min-height: 100vh;
+}
+
+.app__dashboard-left {
+    background: var(---color-brown);
+}
+
+.crimson_color-size {
+    background: var(---color-crimson);
+    color: var(---color-black);
+    font-size: 13px;
+}
+
+.app__dashboard-left_designation{
+    color: var(---color-black);
+    font-family: var(--font-base);
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    margin: 0 1rem;
+    background: var(---color-crimson);
+}
+.app__dashboard-left_user-img_icon {
+    font-size: 100px;
+    color: var(---color-white);
+}
+
+.app__dashboard-left_user-name {
+    font-family: var(--font-base);
+    color: var(---color-crimson);
+    font-weight: 600;
+    text-align: center;
+    padding: 1rem;
+}
+
+.app__dashboard-left_subheading {
+    color: var(---color-white);
+    font-size: 20px;
+    font-family: var(--font-base);
+}

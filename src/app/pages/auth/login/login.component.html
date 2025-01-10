@@ -1,0 +1,28 @@
+<div class="app__login flex__center">
+    <form>
+        <div class="card p-4 app__login-card">
+            <div class="card-header text-center app__login-head">
+                <h1>Login</h1>
+            </div>
+            <div class="card-body app__login-body">
+                <div class="form-group form-row">
+                        <label for="userName" class="col-md-8 col-form-label">User Name</label>
+                        <div class="col-md-12">
+                        <input type="text" class="form-control" placeholder="User name" [(ngModel)]="loginViewModel.userName" name="userName" autofocus />
+                        </div>
+                </div>
+    
+                <div class="form-group form-row">
+                    <label for="userName" class="col-md-8 col-form-label">Password</label>
+                    <div class="col-md-12">
+                        <input type="text" class="form-control" placeholder="Password" [(ngModel)]="loginViewModel.password" name="password" />
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer text-end">
+                <span class="text-danger">{{loginMessage}}</span> &nbsp;
+                <button class="btn text-white text-bold" style="border: 1px solid white;" (click)="onLoginClick($event)">Login</button>
+            </div>
+        </div>
+    </form>
+</div>

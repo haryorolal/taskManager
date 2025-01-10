@@ -1,0 +1,181 @@
+
+<div class="app__dashboard section__padding">
+    <h5 class="text-white">Dashboard</h5>
+    <h6 class="text-white">{{Today | date : "shortDate"}}</h6>
+    <div class="row">
+        <div class="col-lg-3 app__dashboard-left">
+            <div class="column">
+                <div class="col-11 rounded app__dashboard-left_designation">
+                    {{Designation | uppercase}}
+                </div>
+                <div class="col-12 text-center mt-2 app__dashboard-left_user-img">
+                    <fa-icon [icon]="userIcon" class="app__dashboard-left_user-img_icon"></fa-icon>
+                </div>
+                <div class="col-12 app__dashboard-left_user-name">{{Username | uppercase}}</div>
+                <div class="col-12 text-center pt-2 pb-2 app__dashboard-left_subheading">TEAM SUMMARY</div>
+                <div class="col-12 mb-3">
+                    <ul class="list-group">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">No of Team Members
+                            <span class="badge badge-secondary badge-pill crimson_color-size">{{NoOfTeamMembers}}</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">Total Cost Of All Projects
+                            <span class="badge badge-secondary badge-pill crimson_color-size">$ {{TotalCostOfAllProjects}}</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">Pending Tasks
+                            <span class="badge badge-secondary badge-pill crimson_color-size"> {{PendingTasks}}</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">Upcoming Projects
+                            <span class="badge badge-secondary badge-pill crimson_color-size"> {{UpcomingProjects | percent}}</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-12 text-center pt-2 pb-2 app__dashboard-left_subheading">CLIENTS</div>
+                <div class="col-12 pb-2">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item" *ngFor="let client of Clients">{{client | slice : 0 : 10}}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!--middle-->
+        <div class="col-lg-6 app__dashboard-middle">
+            <div class="row">
+                <div class="col-12 pt-0 pb-2" style="background-color: #F5EFDB;">
+                    <div class="row mt-2">
+                        <div class="col-6 text-start">
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Projects</button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#" *ngFor="let project of Projects" onclick="return false" (click)="OnProjectChange($event)">{{project}}</a></li>
+                                </ul>
+                            </div>
+                        </div> 
+                        
+                        <div class="col-6 text-end">
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Yearly Projects</button>
+                                <ul class="dropdown-menu">
+                                    <li *ngFor="let year of Years">
+                                        <a class="dropdown-item" href="#" >
+                                            <span [ngSwitch]="year">
+                                                <span *ngSwitchCase="2019" style="color: green;">{{year}}</span>
+                                                <span *ngSwitchCase="2018" style="color: blue;">{{year}}</span>
+                                                <span *ngSwitchCase="2017" style="color: red;">{{year}}</span>
+                                                <span *ngSwitchDefault style="color: black;">{{year}}</span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                    
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-11 mx-auto mt-1 text-white text-center pt-2 pb-2 mx-auto rounded font-weight-bold" style="background-color: #562B00;">PROJECT BRIEFING</div>
+                <div class="col-12 text-white">
+                    <table class="table table-borderless mx-4">
+                        <tr>
+                            <td>Project Cost</td>
+                            <td>{{ProjectCost | currency : "USD"}}</td>
+                        </tr>
+                        <tr>
+                            <td>Project Expenditure</td>
+                            <td>{{CurrentExpenditure | currency : "USD"}}</td>
+                        </tr>
+                        <tr>
+                            <td>Available Funds</td>
+                            <td>{{AvailableFunds | currency : "USD"}}</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col-11 mx-auto mt-1 text-white text-center pt-2 pb-2 mx-auto rounded font-weight-bold" style="background-color: #562B00;">TEAM MEMBERS SUMMARY</div>
+                <div class="col-12 text-white">
+                    <table class="table mx-4">
+                        <tr>
+                            <th>Regions</th>
+                            <th>Team Members Count</th>
+                            <th>Temporarily Unavailable Members</th>
+                        </tr>
+                        <tr *ngFor="let teamMembersSummary of TeamMembersSummary">
+                            <td>{{teamMembersSummary.Region}}</td>
+                            <td>{{teamMembersSummary.TeamMembersCount}}</td>
+                            <td>{{teamMembersSummary.TemporarilyUnavailableMembers}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!--right-->
+        <div class="col-lg-3 app__dashboard-right">
+            <div class="row">
+                <div class="col-11 mx-auto mt-1 text-white text-center pt-2 pb-2 mx-auto rounded font-weight-bold" style="background-color: #562B00;">TEAM MEMBERS</div>
+                    <div class="col-lg-12 pt-2">
+                        <div class="accordion" id="accordionExample">
+                            <div class="card" *ngFor="let teamMembers of TeamMembers; let i = index">
+                                <!-- <div *ngIf="i !== 0"> -->
+
+                                    <div class="card-header bg-secondary" id="card1">
+                                        <h2 class="mb-0">
+                                            <button class="btn btn-link text-white" type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#cardBody1' + i">{{teamMembers.Region}}</button>
+                                        </h2>
+                                    </div>
+                                    <div [id]="'cardBody1' + i" class="collapse" data-bs-parent="accordion1" [ngClass]="(i === 0) ? 'show' : '' ">
+                                        <div class="card-body">
+
+                                            <div *ngIf="i === 0 then firstTemplate else secondTemplate">
+                                                
+                                            </div>
+                                            <ng-template #firstTemplate>
+                                                <div class="card" *ngFor="let member of teamMembers.Members; let i = index">
+                                                    <div class="card-header bg-primary text-white">#{{1 + i}} {{member.Name}}</div>
+                                                    <div class="card-body">{{member.Status}}</div>
+                                                </div>
+                                            </ng-template>
+                                            <ng-template #secondTemplate>
+                                                <table class="table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>#</th>
+                                                            <th>Name</th>
+                                                            <th>Status</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr *ngFor="let members of teamMembers.Members; let j = index" >
+                                                            <td>{{1 + j}}</td>
+                                                            <td [style.color]="(members.Status === 'Busy' ? 'red': 'black')">{{members.Name}}</td>
+                                                            <td> {{members.Status}}</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </ng-template>
+
+                                            <!-- <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>#</th>
+                                                        <th>Name</th>
+                                                        <th>Status</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr *ngFor="let members of teamMembers.Members; let j = index" >
+                                                        <td>{{1 + j}}</td>
+                                                        <td [style.color]="(members.Status === 'Busy' ? 'red': 'black')">{{members.Name}}</td>
+                                                        <td><fa-icon [icon]="phone"></fa-icon> {{members.Status}}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table> -->
+                                        </div>
+                                    </div>
+
+                                <!-- </div>                                 -->
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
